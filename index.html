@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MyPage</title>
+  <link rel="stylesheet" href="Style.css" />
+</head>
+
+<body>
+  <header>
+    <img src="profile.jpg" alt="Profile_Picture" class="Profile_Picture" />
+    <h2 id="Name">Pablo Muñoz</h2>
+  </header>
+
+  <main>
+    <div class="win95-window win95-collapsible" id="aboutWindow">
+
+<div class="win95-titlebar" id="toggleTitle">
+  <span class="win95-titletext">Welcome to my personal dump :) (click me to expand/collapse!)</span>
+  <div class="win95-controls">
+    <span class="btn">_</span>
+    <span class="btn">▢</span>
+    <span class="btn">✕</span>
+  </div>
+</div>
+
+
+  <div class="win95-body collapsed" id="aboutText">
+    <p>Well, my name you already know, it's on top if you didn't notice. I'm a student at University Diego Portales, located in Chile, my major is civil engineering (Informatics and telecomunnication).</p>
+
+    <p>I am currently in my third year of studies, where I've developed a strong interest in technology, problem-solving, and building things that actually work in the real world.</p>
+
+    <p>I enjoy programming and working with hardware. For me it isn't just about code — it's about understanding systems, experimenting, failing, and improving.</p>
+
+    <p>Alongside engineering, I have a strong creative side. I write, build stories, and create characters.</p>
+
+    <p>I also value self-growth. I train daily and reflect a lot on who I want to become.</p>
+
+    <p>My goal is not only to succeed, but to build a life that feels authentic.</p>
+  </div>
+
+</div>
+
+
+    <!-- Win95 windows grid -->
+    <nav class="win95-grid">
+      <a class="win95-window" href="Projects.html">
+        <div class="win95-titlebar">
+          <span>Projects</span>
+          <div class="win95-controls">
+            <span class="btn">_</span>
+            <span class="btn">▢</span>
+            <span class="btn">✕</span>
+          </div>
+        </div>
+        <div class="win95-body">
+          <img src="projects.jpg" alt="Projects" />
+        </div>
+      </a>
+
+      <a class="win95-window" href="3html.html">
+        <div class="win95-titlebar">
+          <span>Hobbies</span>
+          <div class="win95-controls">
+            <span class="btn">_</span>
+            <span class="btn">▢</span>
+            <span class="btn">✕</span>
+          </div>
+        </div>
+        <div class="win95-body">
+          <!-- keep your exact filename here -->
+          <img src="hobbies.JPG" alt="Hobbies" />
+        </div>
+      </a>
+
+      <a class="win95-window" href="Extras.html">
+        <div class="win95-titlebar">
+          <span>Extras</span>
+          <div class="win95-controls">
+            <span class="btn">_</span>
+            <span class="btn">▢</span>
+            <span class="btn">✕</span>
+          </div>
+        </div>
+        <div class="win95-body">
+          <img src="extras.jpg" alt="Extras" />
+        </div>
+      </a>
+    </nav>
+    
+<a class="win95-window ig-window" href="https://www.instagram.com/pablomvnz_/" target="_blank" rel="noopener noreferrer">
+  <div class="win95-titlebar">
+    <span>Instagram</span>
+    <div class="win95-controls">
+      <span class="btn">_</span>
+      <span class="btn">▢</span>
+      <span class="btn">✕</span>
+    </div>
+  </div>
+
+  <div class="win95-body">
+    <img src="previewIG.png" alt="Instagram Profile Picture" class="ig-profile-pic" />
+    <p style="margin:0;"><strong>@pablomvnz_</strong></p>
+    <p style="margin:8px 0 0;">Open profile ↗</p>
+  </div>
+</a>
+
+
+
+
+  </main>
+
+  <footer>
+    <p>&copy; 2025 MyPage. All rights reserved.</p>
+  </footer>
+
+  <script>
+  const title = document.getElementById("toggleTitle");
+  const text = document.getElementById("aboutText");
+  const windowBox = document.getElementById("aboutWindow");
+
+  title.addEventListener("click", () => {
+    const isCollapsed = text.classList.contains("collapsed");
+
+    text.classList.toggle("collapsed");
+    text.classList.toggle("expanded");
+
+    title.classList.toggle("expanded", isCollapsed);
+    windowBox.classList.toggle("active", isCollapsed);
+  });
+
+    // Active titlebar state for the 3 nav windows (briefly, before navigation)
+    const windows = document.querySelectorAll(".win95-grid .win95-window");
+    windows.forEach((win) => {
+      win.addEventListener("click", () => {
+        windows.forEach((w) => w.classList.remove("active"));
+        win.classList.add("active");
+      });
+    });
+  </script>
+</body>
+</html>

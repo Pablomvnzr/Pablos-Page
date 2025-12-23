@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MyPage</title>
+  <link rel="stylesheet" href="Style.css" />
+</head>
+
+<body>
+  <header>
+    <img src="profile.jpg" alt="Profile_Picture" class="Profile_Picture" />
+    <h2 id="Name">Pablo's projects</h2>
+  </header>
+
+  <main>
+    <!-- Win95 windows grid -->
+    <nav class="win95-grid">
+      <!-- PDF POPUP: Project 1 -->
+      <a class="win95-window project-open" href="#" data-title="Led's and Frecuencys" data-pdf="Proyecto_EYE.pdf">
+        <div class="win95-titlebar">
+          <span>Led's and Frecuencys</span>
+          <div class="win95-controls">
+            <span class="btn">_</span>
+            <span class="btn">▢</span>
+            <span class="btn">✕</span>
+          </div>
+        </div>
+        <div class="win95-body">
+          <img src="EYE.jpeg" alt="Led project" />
+        </div>
+      </a>
+
+      <!-- PDF POPUP: Project 2 -->
+      <a class="win95-window project-open" href="#" data-title="TicPrev wristband" data-pdf="tics.pdf">
+        <div class="win95-titlebar">
+          <span>TicPrev wristband</span>
+          <div class="win95-controls">
+            <span class="btn">_</span>
+            <span class="btn">▢</span>
+            <span class="btn">✕</span>
+          </div>
+        </div>
+        <div class="win95-body">
+          <img src="ticprev.jpeg" alt="TicPrev" />
+        </div>
+      </a>
+
+      <!-- External link: keep as normal -->
+      <a class="win95-window" href="https://pablomvnzr.github.io/renmodels/" target="_blank" rel="noopener noreferrer">
+        <div class="win95-titlebar">
+          <span>Pagina Web RenModels</span>
+          <div class="win95-controls">
+            <span class="btn">_</span>
+            <span class="btn">▢</span>
+            <span class="btn">✕</span>
+          </div>
+        </div>
+        <div class="win95-body">
+          <img src="logo.png" alt="RenModels" />
+        </div>
+      </a>
+    </nav>
+
+    <!-- GitHub window -->
+    <a class="win95-window ig-window" href="https://github.com/Pablomvnzr" target="_blank" rel="noopener noreferrer">
+      <div class="win95-titlebar">
+        <span>My GitHub</span>
+        <div class="win95-controls">
+          <span class="btn">_</span>
+          <span class="btn">▢</span>
+          <span class="btn">✕</span>
+        </div>
+      </div>
+
+      <div class="win95-body">
+        <img src="myGit.png" alt="GitHub preview" class="ig-profile-pic" />
+        <p style="margin:0;"><strong>@Pablomvnzr</strong></p>
+        <p style="margin:8px 0 0;">Open profile ↗</p>
+      </div>
+    </a>
+
+    <!-- PDF POPUP (Win95-style modal) -->
+    <div class="win95-overlay" id="pdfOverlay" hidden></div>
+
+    <div class="win95-notepad" id="pdfModal" hidden>
+      <div class="win95-titlebar notepad-titlebar">
+        <span id="pdfTitle">Document</span>
+        <div class="win95-controls">
+          <button class="btn win95-x" id="pdfClose" aria-label="Close">✕</button>
+        </div>
+      </div>
+
+      <div class="win95-menubar">
+        <span>File</span><span>Edit</span><span>View</span><span>Help</span>
+      </div>
+
+      <div class="win95-notepad-body">
+        <iframe id="pdfFrame" title="PDF viewer" style="width:100%; height:70vh; border:0;"></iframe>
+      </div>
+
+      <div class="win95-statusbar">
+        <span>Ready</span>
+        <span>PDF</span>
+      </div>
+    </div>
+<button onclick="location.href='index.html';" class="win95-btn win95-back-btn">
+  ⬅ Take me back!
+</button>
+
+  </main>
+
+  <footer>
+    <p>&copy; 2025 MyPage. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Active titlebar state (visual only)
+    const windows = document.querySelectorAll(".win95-grid .win95-window");
+    windows.forEach((win) => {
+      win.addEventListener("click", () => {
+        windows.forEach((w) => w.classList.remove("active"));
+        win.classList.add("active");
+      });
+    });
+
+    // PDF modal logic
+    const overlay = document.getElementById("pdfOverlay");
+    const modal = document.getElementById("pdfModal");
+    const frame = document.getElementById("pdfFrame");
+    const titleEl = document.getElementById("pdfTitle");
+    const closeBtn = document.getElementById("pdfClose");
+
+    function openPdf(title, pdfUrl) {
+      titleEl.textContent = title;
+      frame.src = pdfUrl;
+      overlay.hidden = false;
+      modal.hidden = false;
+    }
+
+    function closePdf() {
+      overlay.hidden = true;
+      modal.hidden = true;
+      frame.src = ""; // stop loading / free memory
+    }
+
+    // Open on click for items with data-pdf
+    document.querySelectorAll(".project-open").forEach((a) => {
+      a.addEventListener("click", (e) => {
+        e.preventDefault();
+        openPdf(a.dataset.title || "Document", a.dataset.pdf);
+      });
+    });
+
+    // Close handlers
+    closeBtn.addEventListener("click", closePdf);
+    overlay.addEventListener("click", closePdf);
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && !modal.hidden) closePdf();
+    });
+  </script>
+</body>
+</html>

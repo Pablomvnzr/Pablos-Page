@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Extras</title>
+  <link rel="stylesheet" href="Style.css" />
+</head>
+
+<body>
+  <header>
+    <img src="profile.jpg" alt="Profile_Picture" class="Profile_Picture" />
+    <h2 id="Name">Extras</h2>
+  </header>
+
+  <main>
+
+    <nav class="win95-grid">
+
+      <!-- About this site -->
+      <div class="win95-window active">
+        <div class="win95-titlebar">
+          <span>about_this_site.txt</span>
+          <div class="win95-controls">
+            <span class="btn">_</span>
+            <span class="btn">▢</span>
+            <span class="btn">✕</span>
+          </div>
+        </div>
+        <div class="win95-body">
+          <p style="margin-top:0;">
+            I built this site with a <strong>Windows 95</strong> aesthetic because I wanted it
+            to feel like a desktop: windows, clicks, simple interactions, no unnecessary noise.
+          </p>
+          <p>
+            It also reflects how I like to learn:
+            <strong>build → break → fix → improve</strong>.
+          </p>
+        </div>
+      </div>
+
+      <!-- Things I'm learning -->
+      <div class="win95-window">
+        <div class="win95-titlebar">
+          <span>learning.log</span>
+          <div class="win95-controls">
+            <span class="btn">_</span>
+            <span class="btn">▢</span>
+            <span class="btn">✕</span>
+          </div>
+        </div>
+        <div class="win95-body">
+          <p style="margin-top:0;"><strong>Things I'm currently learning:</strong></p>
+          <ul style="margin: 10px 0 0; padding-left: 20px;">
+            <li>Trying to learn German, I don't know if I'll finish.</li>
+            <li>Also trying to draw, I'm horrible at it :(.</li>
+            <li>Learning more about web development</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Games that shaped me -->
+      <div class="win95-window">
+        <div class="win95-titlebar">
+          <span>games_that_shaped_me.ini</span>
+          <div class="win95-controls">
+            <span class="btn">_</span>
+            <span class="btn">▢</span>
+            <span class="btn">✕</span>
+          </div>
+        </div>
+        <div class="win95-body">
+          <p style="margin-top:0;">
+            <strong>Mortal Kombat 9</strong> was my introduction to fighting games.
+          </p>
+          <p>
+            Nowadays I spend a lot of time playing <strong>Tekken 8</strong>.
+            I really enjoy the constant learning: matchups, timing, execution.
+          </p>
+          <p>
+            When I was younger, I played on a <strong>GameCube</strong>,
+            and I also spent countless hours playing
+            <strong>GTA San Andreas</strong> on a <strong>very old PC</strong>.
+          </p>
+        </div>
+      </div>
+
+      <!-- Small experiments -->
+      <div class="win95-window">
+        <div class="win95-titlebar">
+          <span>small_experiments.exe</span>
+          <div class="win95-controls">
+            <span class="btn">_</span>
+            <span class="btn">▢</span>
+            <span class="btn">✕</span>
+          </div>
+        </div>
+        <div class="win95-body">
+          <p style="margin-top:0;">
+            Small things I like to experiment with on this site:
+          </p>
+          <ul style="margin: 10px 0 0; padding-left: 20px;">
+            <li>Win95-style windows with active titlebars</li>
+            <li>Expandable / collapsible sections</li>
+            <li>PDF popups for projects</li>
+            <li>Responsive layout (works on mobile)</li>
+          </ul>
+          <p style="margin-bottom:0;">
+            The goal is to treat features like small “apps”.
+          </p>
+        </div>
+      </div>
+
+      <!-- System info -->
+      
+      <!-- Notes -->
+      <div class="win95-window">
+        <div class="win95-titlebar">
+          <span>notes.txt</span>
+          <div class="win95-controls">
+            <span class="btn">_</span>
+            <span class="btn">▢</span>
+            <span class="btn">✕</span>
+          </div>
+        </div>
+        <div class="win95-body">
+          <p style="margin-top:0;">
+            dumbahh me wrote a book in two languages lol.
+          </p>
+          <p> i can spend hours polishing details no one notices.</p>
+
+          <p>i tried writing a fantasy novel one, i never finished it.
+          </p>
+          <p> Hiking rules!, currently planning to climb the "Cerro la cruz" here in Chile.</p>
+        </div>
+      </div>
+
+    </nav>
+
+    <!-- Back button -->
+    <button onclick="location.href='index.html';" class="win95-btn win95-back-btn">
+      ⬅ Take me back
+    </button>
+
+  </main>
+
+  <footer>
+    <p>&copy; 2025 MyPage. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Click-to-focus behavior (active titlebar)
+    const allWindows = document.querySelectorAll(".win95-window");
+    allWindows.forEach((win) => {
+      win.addEventListener("click", () => {
+        allWindows.forEach((w) => w.classList.remove("active"));
+        win.classList.add("active");
+      });
+    });
+  </script>
+</body>
+</html>

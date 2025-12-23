@@ -1,0 +1,424 @@
+/* HEADER */
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 24px 0;
+}
+
+/* PAGE BASE */
+html, body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+}
+
+body {
+  padding: 16px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+
+  background-image: url("bgPhoto.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+/* PROFILE PIC */
+.Profile_Picture {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid rgb(33, 4, 4);
+}
+
+/* TEXT MARGINS */
+p, h1, h2, h3, h4, h5, h6 {
+  margin: 16px 0;
+}
+
+p {
+  margin-bottom: 20px;
+}
+
+/* MAIN WIDTH */
+main {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+  p, h1, h2 {
+    margin: 12px 0;
+  }
+
+  .Profile_Picture {
+    width: 140px;
+    height: 140px;
+  }
+}
+
+/* DEPLOYER */
+#toggleTitle {
+  cursor: pointer;
+  user-select: none;
+}
+
+#aboutText {
+  overflow: hidden;
+  transition: max-height 0.5s ease, opacity 0.4s ease;
+}
+
+#aboutText.collapsed {
+  max-height: 0;
+  opacity: 0;
+}
+
+#aboutText.expanded {
+  max-height: 1000px;
+  opacity: 1;
+}
+
+
+/*the grid*/
+/* --- WIN95 GRID LAYOUT --- */
+.win95-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin: 40px 0;
+}
+
+@media (max-width: 800px) {
+  .win95-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* --- WIN95 WINDOW CARD --- */
+.win95-window {
+  text-decoration: none;
+  color: #000;
+  background: #c0c0c0;
+  display: block;
+  cursor: pointer;
+
+  /* classic win95 bevel border */
+  border-top: 2px solid #ffffff;
+  border-left: 2px solid #ffffff;
+  border-right: 2px solid #404040;
+  border-bottom: 2px solid #404040;
+
+  box-shadow: 1px 1px 0 #000; /* extra crunchy pixel vibe */
+}
+
+.win95-window:hover {
+  filter: brightness(1.02);
+}
+
+.win95-window:active {
+  /* pressed in */
+  border-top: 2px solid #404040;
+  border-left: 2px solid #404040;
+  border-right: 2px solid #ffffff;
+  border-bottom: 2px solid #ffffff;
+  box-shadow: 0 0 0 #000;
+  transform: translate(1px, 1px);
+}
+
+.win95-window:focus {
+  outline: 2px dotted #000;
+  outline-offset: 3px;
+}
+
+/* --- TITLE BAR --- */
+.win95-titlebar {
+  /* inactive titlebar default */
+  background: #808080;
+  color: #c0c0c0;
+
+  font-family: "MS Sans Serif", Tahoma, Verdana, sans-serif;
+  font-size: 14px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 6px 6px 6px 8px;
+}
+
+/* active window titlebar */
+.win95-window.active .win95-titlebar {
+  background: #000080; /* classic Win95 blue */
+  color: #ffffff;
+}
+
+/* dotted focus frame like old UI */
+.win95-window.active {
+  outline: 1px dotted #000;
+  outline-offset: -4px;
+}
+
+/* --- TITLE BAR BUTTONS --- */
+.win95-controls {
+  display: flex;
+  gap: 4px;
+}
+
+.win95-controls .btn {
+  width: 18px;
+  height: 16px;
+  line-height: 14px;
+  text-align: center;
+  font-size: 12px;
+
+  background: #c0c0c0;
+  color: #000;
+
+  border-top: 2px solid #ffffff;
+  border-left: 2px solid #ffffff;
+  border-right: 2px solid #404040;
+  border-bottom: 2px solid #404040;
+}
+
+/* --- WINDOW BODY --- */
+.win95-body {
+  padding: 10px;
+  background: #c0c0c0;
+}
+
+.win95-body img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+
+  /* inner sunken frame */
+  border-top: 2px solid #404040;
+  border-left: 2px solid #404040;
+  border-right: 2px solid #ffffff;
+  border-bottom: 2px solid #ffffff;
+
+  display: block;
+}
+
+@media (max-width: 800px) {
+  .win95-body img {
+    height: 220px;
+  }
+}
+
+
+/* Launcher spacing */
+.win95-launcher {
+  max-width: 800px;
+  margin: 24px auto;
+}
+
+/* Overlay */
+.win95-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.35);
+  z-index: 999;
+}
+
+/* Notepad window */
+.win95-notepad {
+  position: fixed;
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(720px, 92vw);
+  z-index: 1000;
+
+  background: #c0c0c0;
+
+  border-top: 2px solid #ffffff;
+  border-left: 2px solid #ffffff;
+  border-right: 2px solid #404040;
+  border-bottom: 2px solid #404040;
+
+  box-shadow: 2px 2px 0 #000;
+}
+
+/* Notepad titlebar should look active */
+.notepad-titlebar {
+  background: #000080;
+  color: #fff;
+}
+
+/* Close button style */
+.win95-x {
+  width: 22px;
+  height: 18px;
+  line-height: 14px;
+  background: #c0c0c0;
+  border-top: 2px solid #ffffff;
+  border-left: 2px solid #ffffff;
+  border-right: 2px solid #404040;
+  border-bottom: 2px solid #404040;
+  cursor: pointer;
+}
+
+/* Menubar */
+.win95-menubar {
+  display: flex;
+  gap: 18px;
+  padding: 6px 10px;
+  font-family: "MS Sans Serif", Tahoma, Verdana, sans-serif;
+  font-size: 13px;
+  color: #000;
+}
+
+/* Notepad text area */
+.win95-notepad-body {
+  padding: 10px;
+  background: #c0c0c0;
+}
+
+.win95-notepad-text {
+  margin: 0;
+  padding: 10px;
+  background: #ffffff;
+  color: #000;
+
+  font-family: "Courier New", Courier, monospace;
+  font-size: 14px;
+  line-height: 1.45;
+
+  height: 320px;
+  overflow: auto;
+
+  /* sunken frame */
+  border-top: 2px solid #404040;
+  border-left: 2px solid #404040;
+  border-right: 2px solid #ffffff;
+  border-bottom: 2px solid #ffffff;
+}
+
+/* Status bar */
+.win95-statusbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 10px;
+  font-family: "MS Sans Serif", Tahoma, Verdana, sans-serif;
+  font-size: 12px;
+
+  background: #c0c0c0;
+
+  border-top: 2px solid #ffffff;
+}
+/* collapsible behavior */
+.win95-collapsible .win95-body {
+  overflow: hidden;
+  transition: max-height 0.5s ease, opacity 0.4s ease;
+}
+
+.win95-collapsible .win95-body.collapsed {
+  max-height: 0;
+  opacity: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.win95-collapsible .win95-body.expanded {
+  max-height: 1000px;
+  opacity: 1;
+}
+
+/* make titlebar clickable */
+#toggleTitle {
+  cursor: pointer;
+  user-select: none;
+}
+
+.ig-body{
+  display:flex;
+  gap:12px;
+  align-items:center;
+}
+
+.ig-body img{
+  width:100%;
+  height:100%;
+  object-fit: cover;
+  border-top: 2px solid #404040;
+  border-left: 2px solid #404040;
+  border-right: 2px solid #ffffff;
+  border-bottom: 2px solid #ffffff;
+}
+.ig-profile-pic{
+  width:100%;
+  height:100%;
+}
+.ig-profile-pic {
+  width: 100%;
+  height: auto;              /* 👈 clave */
+  object-fit: contain;       /* 👈 clave */
+  background: #c0c0c0;
+}
+.ig-window .win95-body img {
+  height: auto;
+}
+
+
+.win95-btn {
+  margin: 32px auto 0;
+  display: block;
+
+  padding: 8px 16px;
+  font-family: "MS Sans Serif", Tahoma, Verdana, sans-serif;
+  font-size: 14px;
+  color: #000;
+  background: #c0c0c0;
+
+  border-top: 2px solid #ffffff;
+  border-left: 2px solid #ffffff;
+  border-right: 2px solid #404040;
+  border-bottom: 2px solid #404040;
+
+  cursor: pointer;
+}
+
+.win95-btn:hover {
+  filter: brightness(1.05);
+}
+
+.win95-btn:active {
+  border-top: 2px solid #404040;
+  border-left: 2px solid #404040;
+  border-right: 2px solid #ffffff;
+  border-bottom: 2px solid #ffffff;
+  transform: translate(1px, 1px);
+}
+
+header {
+  position: relative;
+}
+
+/* Desktop: top-right floating */
+.win95-back-btn {
+  position: fixed;
+  top: 50px;
+  right: 430px;
+  z-index: 1000;
+
+  padding: 6px 12px;
+  font-size: 13px;
+}
+
+/* Mobile: place under the header title */
+@media (max-width: 600px) {
+  .win95-back-btn {
+    position: static;     /* stops fixed positioning */
+    margin-top: 12px;     /* space under "Pablo's projects" */
+    display: inline-block;
+    z-index: auto;
+  }
+}
